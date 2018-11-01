@@ -1,0 +1,47 @@
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+
+.input-style input[type="text"] {
+    font-family: 'Open Sans Condensed', arial, sans;
+    outline: none;
+    display: block;
+    height: 45px;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background: transparent;
+    font: 16px Arial, Helvetica, sans-serif;
+}
+
+.input-style .input-style-sm-50 {
+    width: 50px;
+}
+
+.input-style .input-style-sm-60 {
+    width: 50px;
+}
+
+.input-style .input-style-sm-70 {
+    width: 70px;
+}
+
+.input-style .input-style-calc {
+    width: calc(97% - 440px)
+}
+
+.border-bottom {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.border-style {
+    border:1px solid transparent;
+}
+
+.border-style:hover {
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid #ddd ;
+}

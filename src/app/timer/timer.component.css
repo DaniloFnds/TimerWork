@@ -1,0 +1,147 @@
+.secaoTarefas  .secaoLinhaTarefa{
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    border-radius: .25rem;
+    background-color: #FFF;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    font-size: 12px;
+}
+
+
+.secaoDescricaoTimer {
+    line-height: 45px;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.secaoTempos {
+    width: 385px;
+}
+.secaoTempos {
+    padding-left: 100px;
+}
+
+.nota {
+    height: 100%;
+    outline: none;
+    border:1px solid transparent;
+    resize: none;
+    background-color: #FFF;
+    line-height: 3.3em;
+    width: 320px;
+    opacity: 1;
+}
+
+.nota:hover {
+    border: 1px solid #ddd;
+}
+
+.secaoTempos input {
+    text-align: center;
+}
+
+.nota:focus {
+    position:absolute;
+    height:150px;
+    background-color: #FFF;
+    border: 1px solid #66afe9;
+    background-image: none;
+    outline: none;
+    -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: inset inset 0 0 5px rgba(0,0,0,0.5);
+    background-image: none;
+    overflow: hidden;
+    resize: none;
+    width: 320px;
+    z-index: 10;
+}
+
+.tempos {
+    height: 100%;
+    border: none;
+    font-weight: bold;
+    border:1px solid transparent;
+    outline: none;
+    width: 50px;
+}
+
+.secaoContador {
+    margin-right: 10px;
+}
+
+.contador {
+    width: 70px;
+}
+
+.tempos:hover {
+    border: 1px solid #ddd;
+}
+
+.form-control {
+    font-size: 12px !important;
+}
+
+.hora-inicio {
+    margin-right: 5px;
+   
+}
+
+.hora-inicio input {
+    color: #929292;
+}
+
+.hora-fim input {
+    color: #929292;
+}
+
+.hora-fim {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.botaoPlay {
+    width: 50px;
+    height: 43px;
+    line-height: 2em;
+    margin-top: 3px;
+}
+
+.secao-total {
+    height: 50px;
+    margin: 5px 68px;
+}
+
+.totais-ordem {
+    border: 1px solid black;
+
+}
+.total-contador {
+    border: 1px solid black;
+}
+
+.label-total {
+    display: inline-block;
+    margin-right: 7px
+}
+
+.duracao-total {
+    display: inline-block;
+}
+
+.total-tempos {
+    border: 1px solid black;
+}
+
+.inicio-total {
+    display: inline-block;
+    margin-left: 25px;
+}
+.fim-total {
+    display: inline-block;
+    margin-left: 28px;
+}
+
+.text-align-right {
+   text-align: right;
+}
