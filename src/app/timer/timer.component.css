@@ -3,7 +3,6 @@
     height: 50px;
     border-radius: .25rem;
     background-color: #FFF;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     font-size: 12px;
 }
 
@@ -122,7 +121,9 @@
 
 .label-total {
     display: inline-block;
-    margin-right: 7px
+    margin-right: 10px;
+    color: #929292;
+    font-weight: 500;
 }
 
 .duracao-total {
@@ -144,4 +145,12 @@
 
 .text-align-right {
    text-align: right;
+}
+
+.inicio-total  {
+    color: #929292;
+}
+
+.fim-total {
+    color: #929292;
 }
