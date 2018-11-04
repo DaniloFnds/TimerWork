@@ -9,6 +9,7 @@
         </div>
         <div class="row secaoTempos ">
             <div class="secaoContador">
+                
                 <input type="text" class="tempos contador" [(ngModel)]="timer.contador" (blur)="atualizaContador(timer)"  >
             </div>
             <div class="hora-inicio">
@@ -18,9 +19,9 @@
             <div class="hora-fim">
                 <input type="text" class="tempos" value="11:00">
             </div>
-            <div class="botaoPlay btn btn-outline-success">
-                <i class="icon-play fas fa-play"></i>
-            </div>
+            <button  class="botaoPlay btn btn-outline-success" (click)="startTarefa(timer)">
+                    <i class="icon-play fas fa-play"></i>
+            </button>
         </div>
     </div>
     
@@ -31,10 +32,10 @@
                 TOTAL
             </div>
             <div class="duracao-total">
-                5h 40m
+                    {{ totalHorasDiario() }}
             </div>
             <div class="inicio-total">
-                10:00
+                10
             </div>
             <div class="fim-total">
                 18:10

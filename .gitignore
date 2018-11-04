@@ -37,3 +37,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+.history/src/app/timer
+.history/.gitignore_*

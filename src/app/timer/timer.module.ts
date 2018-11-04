@@ -11,7 +11,7 @@ import { TimerManualComponent } from './timer-manual/timer-manual.component';
   imports: [
     CommonModule,
     TimerRoutingModule,
-    FormsModule    
+    FormsModule
   ],
   providers: [
     TimerService
