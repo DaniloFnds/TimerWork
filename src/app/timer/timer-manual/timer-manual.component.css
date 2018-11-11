@@ -45,3 +45,12 @@
     margin: 0 auto;
     border: 1px solid #ddd ;
 }
+
+.borda-vermelha {
+    border:1px solid red;
+}
+
+.horas {
+    color: #929292;
+    border-bottom: 1px solid #ddd;
+}

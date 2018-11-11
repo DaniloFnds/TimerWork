@@ -6,12 +6,19 @@ import { FormsModule } from '@angular/forms';
 import { TimerComponent } from './timer.component';
 import { TimerRoutingModule } from './timer.routing.module';
 import { TimerManualComponent } from './timer-manual/timer-manual.component';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   imports: [
     CommonModule,
     TimerRoutingModule,
-    FormsModule
+    FormsModule,
+    ButtonModule,
+    CalendarModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [
     TimerService
@@ -21,4 +28,10 @@ import { TimerManualComponent } from './timer-manual/timer-manual.component';
     TimerManualComponent
   ]
 })
-export class TimerModule { }
+export class TimerModule {
+  
+  
+  constructor() {
+
+  }
+ }

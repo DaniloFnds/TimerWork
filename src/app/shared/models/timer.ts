@@ -1,12 +1,12 @@
 export class Timer {
 
-    public descricao: string;
-    public nota: string;
-    public contador: string;
-
-    constructor(descricao: string,nota: string,contador: string){
-        this.descricao = descricao;
-        this.nota = nota;
-        this.contador = contador;
+        constructor(
+              public descricao: string = ""
+            , public nota: string = ""
+            , public contador: string = "0s"
+            , public dataLancamentto: string = ""
+            , public inicio: Date = null
+            , public fim: Date = null
+            ){
     }
 }

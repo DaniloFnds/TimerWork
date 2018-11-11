@@ -5,3 +5,23 @@ body {
     color: #222;
     background-color: #F3F3F3;
 }
+
+.timepicker-hora-manual .ui-calendar-timeonly {
+    height: 10px;
+}
+.timepicker-hora-manual .ui-datepicker .ui-timepicker {
+    font-size: 10px !important;
+}
+.timepicker-hora-manual .ui-inputtext {
+    width: 85px;
+    font-size: 14px;
+    text-align: center;
+    height: 35px;
+    color: #929292;
+    border: 1px solid transparent !important;
+}
+
+.timepicker-hora-manual .ui-inputtext:hover {
+    border: 1px solid #ddd !important;
+}
+

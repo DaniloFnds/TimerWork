@@ -1,5 +1,22 @@
-<app-timer-manual></app-timer-manual>
-<div class="secaoTarefas mt-5 input-style">
+<app-timer-manual (eventTimerFinalizado)="onTimerNovo($event)"></app-timer-manual>
+
+<div class="row mt-5 no-gutters ">
+    <div class="col-2 seta">
+       {{ dataTimer }}
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-sm btn-link">
+            <i class="seta angle-double-left fas fa-angle-double-left"></i>
+        </button>
+        <span style=" margin-left: 15px"></span>
+        <button type="button" class="btn btn-sm btn-link">
+            <i class="seta angle-double-right fas fa-angle-double-right"></i>
+        </button>
+        
+    </div>
+</div>
+
+<div class="secaoTarefas input-style">
     <div class="row secaoLinhaTarefa "  *ngFor="let timer of timerList; let ix=index">
         <div class="col secaoDescricaoTimer">
             <span class="" title="asdasdsad">{{ timer.descricao }}</span>

@@ -1,18 +1,33 @@
+
 <div class="row shadow bg-white rounded form-inline p-3 mt-4 input-style">
-    <input class="border-bottom" style="width: calc(90% - 440px)" placeholder="Nova tarefa" type="text">
+    <input class="border-bottom " [ngClass]="{'borda-vermelha': !isValidoStartContador}"
+    style="width: calc(90% - 440px)" 
+    [(ngModel)]="timer.descricao" 
+    placeholder="Nova tarefa" type="text">
   <div>
-    <input class="input-style-sm-70 ml-3 border-style" type="text" value="1m50s">
+    <input id="contador" 
+      class="input-style-sm-70 ml-3 border-style border-bottom" 
+      type="text" readonly [(ngModel)]="timer.contador">
   </div>
   <div>
-    <input class="input-style-sm-60 ml-2 mr-2 border-style" type="text" value="10:00">
+    <!-- <input class="input-style-sm-60 ml-2 mr-2 border-style horas" type="text" [value]="timer.inicio" [placeholder]="timer.inicio"> -->
+    <p-calendar [(ngModel)]="timer.inicio" class="timepicker-hora-manual" 
+      (onClose)="calcularHoras()" [placeholder]="timer.inicio"
+     [timeOnly]="true" showTime="true" hourFormat="24"></p-calendar>
   </div>
   <div>
-    <input class="input-style-sm-60 border-style" type="text" value="15:00">
+    <!-- <input class="input-style-sm-60 border-style horas" type="text" [placeholder]="timer.fim"> -->
+    <p-calendar [(ngModel)]="timer.fim" class="timepicker-hora-manual" 
+      (onClose)="calcularHoras()" [placeholder]="timer.fim"
+      [timeOnly]="true" showTime="true" hourFormat="24"></p-calendar>
   </div>
   <div>
-    <button type="button" class="btn btn-outline-info ml-4 mr-2 ">Iniciar Timer</button>
+    <button type="button"  (click)="startStopTimer()" 
+    class="btn ml-4 mr-2 {{ isCorrendoContador ? 'btn-danger' : 'btn-outline-info'  }} ">
+        {{ isCorrendoContador ? 'Parar Timer' : 'Iniciar Timer' }}
+    </button>
   </div>
   <div>
-    <button type="button" class="btn btn-success ml-2">Adicionar Timer</button>
+    <button type="button" class="btn btn-success ml-2" (click)="adicionarTimerManual()">Adicionar Timer</button>
   </div>
 </div>
