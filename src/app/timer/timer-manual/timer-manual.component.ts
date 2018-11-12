@@ -36,23 +36,30 @@ export class TimerManualComponent implements OnInit {
         this.isCorrendoContador = false;
         this.eventTimerFinalizado.emit(this.timer);
         this.timer = new Timer();
+        this.timer.inicio = moment().toDate();
+        this.timer.fim = moment().toDate();
       } else {
         this.isValidoStartContador = true;
         this.isCorrendoContador = true;
-        let int: Subscription = null;
+        const inico = moment(this.timer.inicio);
+        const fim = moment(this.timer.fim);
+        const startComSegundos = moment.duration(fim.diff(inico)).asSeconds();
         this.contadorSubs = interval(1000)
           .pipe(
             map((x) => {
+              if(startComSegundos !== 0) {
+                x = startComSegundos;
+              }
               let seconds = x;
+              console.log(startComSegundos)
+             
               if (x <= 60) {
                 this.timer.contador = String(x) + 's';
               } else {
                 seconds %= 3600;
                 if (x >= 3600) {
-                  // timerNovo.contador = moment.utc(moment.duration(x, 'hours').asMilliseconds()).format("HH[h ]mm[m]")
                   this.timer.contador = String(Math.floor(x / 3600)) + 'h ' + String(Math.floor(seconds / 60)) + 'm ' + seconds % 60 + 's'
                 } else {
-                  // timerNovo.contador = moment.utc(moment.duration(x, 'minutes').asMilliseconds()).format("mm[m]")
                   this.timer.contador = String(Math.floor(seconds / 60)) + 'm ' + seconds % 60 + 's'
                 }
               }
@@ -63,14 +70,34 @@ export class TimerManualComponent implements OnInit {
   }
 
   adicionarTimerManual() {
+    if(!this.timer.foiAlteradoHorasInicioFim) {
+      const horaAtual = moment();
+      let horaFinal = moment();
 
+      const regex = /[0-9]{1,2}[hms]{1,2}/g
+      const regDigito = /[0-9]{1,2}/g
+     this.timer.contador.toLowerCase().match(regex)
+      .forEach((value) => {
+        const resultado = value.match(regDigito)[0];
+          if (value.includes("h")) {
+            horaFinal.add(Number(resultado), 'hours')
+          }
+          if (value.includes("m")) {
+            horaFinal.add(Number(resultado), 'minutes')
+          }
+      })
+      this.timer.inicio = horaAtual.toDate();
+      this.timer.fim = horaFinal.toDate();
+    }
+    this.eventTimerFinalizado.emit(this.timer);
+    this.timer = new Timer();
   }
 
   calcularHoras() {
-    console.log(this.timer)
     const inico = moment(this.timer.inicio);
     const fim = moment(this.timer.fim);
-    console.log(moment.duration(fim.diff(inico)))
+    this.timer.contador = moment.utc(moment.duration(fim.diff(inico)).asMilliseconds()).format("HH[h ]mm[m]");
+    this.timer.foiAlteradoHorasInicioFim = true;
   }
 
   ngOnDestroy() {

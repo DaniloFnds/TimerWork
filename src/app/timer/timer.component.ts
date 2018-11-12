@@ -56,8 +56,8 @@ export class TimerComponent implements OnInit {
   }
 
   startTarefa(timer: Timer) {
-    console.log(timer)
-    let timerNovo = new Timer(timer.descricao, timer.nota, '0s');
+    let timerNovo = new Timer(timer.descricao, timer.nota, '0s', moment().toDate(), timer.fim);
+    timerNovo.tempoCorrendo = true;
     this.timerList.push(timerNovo)
 
 
@@ -95,10 +95,10 @@ export class TimerComponent implements OnInit {
     const regDigito = /[0-9]{1,2}/g
 
     this.timerList.forEach((tempo) => {
-      let regMatch = tempo.contador.match(regex);
+      const regMatch = tempo.contador.match(regex);
       if (regMatch != null) {
         regMatch.forEach((value) => {
-          let resultado = value.match(regDigito)[0];
+          const resultado = value.match(regDigito)[0];
           if (value.includes("h")) {
             totalFinal.add(Number(resultado), 'hours')
           }
@@ -112,7 +112,6 @@ export class TimerComponent implements OnInit {
   }
 
   onTimerNovo(evento: Timer) {
-    console.log('evento:', evento)
     this.timerList.push(evento);
   }
 

@@ -30,14 +30,18 @@
                 <input type="text" class="tempos contador" [(ngModel)]="timer.contador" (blur)="atualizaContador(timer)"  >
             </div>
             <div class="hora-inicio">
-                <input type="text" class="tempos " value="10:00">
+                <input type="text" class="tempos " readonly [value]="timer.inicio | date:'HH:mm'">
             </div>
             <span style="line-height: 4em;">-</span>
             <div class="hora-fim">
-                <input type="text" class="tempos" value="11:00">
+                <input type="text" class="tempos" readonly [value]="timer.fim | date:'HH:mm'">
             </div>
-            <button  class="botaoPlay btn btn-outline-success" (click)="startTarefa(timer)">
-                    <i class="icon-play fas fa-play"></i>
+            <button (click)="startTarefa(timer)"
+                 [class.btn-danger]="timer.tempoCorrendo" 
+                 [class.btn-outline-success]="!timer.tempoCorrendo"
+                 class="botaoPlay btn " >
+                    <i [class.fa-play]="!timer.tempoCorrendo"
+                       [class.fa-stop]="timer.tempoCorrendo" class="icon-play fas "></i>
             </button>
         </div>
     </div>
