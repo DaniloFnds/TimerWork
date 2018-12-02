@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class TimerService {
 
-  private readonly API = 'http://localhost:8180/timer';
+  private readonly API = 'https://timerwork-api.herokuapp.com/timer';
 
   constructor(private http: HttpClient) { }
 
