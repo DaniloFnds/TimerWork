@@ -1,14 +1,15 @@
 export class Timer {
-        public tempoCorrendo: boolean
         public foiAlteradoHorasInicioFim: boolean;
+        id: string;
 
         constructor(
               public descricao: string = null
             , public nota: string = ""
             , public contador: string = "0s"
-            , public dataLancamentto: Date = null
-            , public inicio: Date = new Date()
-            , public fim: Date = new Date()
+            , public dataLancamento: string = null
+            , public inicio: Date = null
+            , public fim: Date = null
+            , public tempoCorrendo: boolean = false
             ){  }
 
  

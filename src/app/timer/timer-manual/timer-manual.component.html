@@ -7,16 +7,17 @@
   <div>
     <input id="contador" 
       class="input-style-sm-70 ml-3 border-style border-bottom" 
+      [ngClass]="{'borda-vermelha': !isValidoContador}"
       type="text" [(ngModel)]="timer.contador">
   </div>
   <div>
     <p-calendar [(ngModel)]="timer.inicio" class="timepicker-hora-manual" 
-      (onClose)="calcularHoras()" [placeholder]="timer.inicio"
+      (onClose)="calcularHoras()" [placeholder]="timer.inicio" [readonlyInput]="true"
      [timeOnly]="true" showTime="true" hourFormat="24"></p-calendar>
   </div>
   <div>
     <p-calendar [(ngModel)]="timer.fim" class="timepicker-hora-manual" 
-      (onClose)="calcularHoras()" [placeholder]="timer.fim"
+      (onClose)="calcularHoras()" [placeholder]="timer.fim" [readonlyInput]="true"
       [timeOnly]="true" showTime="true" hourFormat="24"></p-calendar>
   </div>
   <div>

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TimerService } from './services/timer.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     ButtonModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
     
   ],
   providers: [

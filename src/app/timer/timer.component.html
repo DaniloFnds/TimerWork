@@ -5,12 +5,16 @@
        {{ dataTimer }}
     </div>
     <div class="col">
-        <button type="button" class="btn btn-sm btn-link">
+        <button type="button" class="btn btn-sm btn-link" (click)="diasAnteriores()" >
             <i class="seta angle-double-left fas fa-angle-double-left"></i>
         </button>
         <span style=" margin-left: 15px"></span>
-        <button type="button" class="btn btn-sm btn-link">
+        <button type="button" class="btn btn-sm btn-link" (click)="proximosDias()" >
             <i class="seta angle-double-right fas fa-angle-double-right"></i>
+        </button>
+        <button type="button" class="btn btn-sm" [hidden]="dataDiferenteAtual" (click)="irDiaAtual()" 
+             style="margin-left: 15px;margin-bottom:5px">
+            Hoje
         </button>
         
     </div>
@@ -22,11 +26,10 @@
             <span class="" title="asdasdsad">{{ timer.descricao }}</span>
         </div>
         <div class="col ">
-            <textarea placeholder="Notas" class=" nota" rows="1" cols="2">{{ timer.nota }}</textarea>
+            <textarea placeholder="Notas" class=" nota" rows="1" cols="2" [(ngModel)]="timer.nota" (blur)="atualizaContador(timer)">{{ timer.nota }}</textarea>
         </div>
         <div class="row secaoTempos ">
             <div class="secaoContador">
-                
                 <input type="text" class="tempos contador" [(ngModel)]="timer.contador" (blur)="atualizaContador(timer)"  >
             </div>
             <div class="hora-inicio">
@@ -41,26 +44,17 @@
                  [class.btn-outline-success]="!timer.tempoCorrendo"
                  class="botaoPlay btn " >
                     <i [class.fa-play]="!timer.tempoCorrendo"
-                       [class.fa-stop]="timer.tempoCorrendo" class="icon-play fas "></i>
+                       [class.fa-stop]="timer.tempoCorrendo" 
+                       class="icon-play fas "></i>
             </button>
         </div>
     </div>
-    
-
     <div class="row ">
         <div class="col secao-total text-align-right">
-            <div class="label-total">
-                TOTAL
-            </div>
-            <div class="duracao-total">
-                    {{ totalHorasDiario() }}
-            </div>
-            <div class="inicio-total">
-                10
-            </div>
-            <div class="fim-total">
-                18:10
+            <div class="label-total" [hidden]="timerList.length == 0">
+                TOTAL {{ totalHorasDiario() }}
             </div>
         </div>
     </div>
+    
 </div>

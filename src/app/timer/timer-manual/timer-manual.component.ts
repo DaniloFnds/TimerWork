@@ -1,3 +1,4 @@
+import { TimerService } from './../services/timer.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Timer } from 'src/app/shared/models/timer';
 import { Observable, interval, Subscription } from 'rxjs';
@@ -15,16 +16,22 @@ export class TimerManualComponent implements OnInit {
   timer: Timer = null;
   isCorrendoContador: boolean = false;
   isValidoStartContador: boolean = true;
+  isValidoContador: boolean = true;
   contadorSubs: Subscription;
+  regDigito = /[0-9]{1,2}/g
 
   @Output() eventTimerFinalizado = new EventEmitter();
 
-  constructor() { }
+  constructor(private timerService: TimerService) { }
 
-  ngOnInit() {
+  private inicaTimer() {
     this.timer = new Timer();
     this.timer.inicio = moment().toDate();
     this.timer.fim = moment().toDate();
+  }
+
+  ngOnInit() {
+   this.inicaTimer();
   }
 
   startStopTimer() {
@@ -47,12 +54,10 @@ export class TimerManualComponent implements OnInit {
         this.contadorSubs = interval(1000)
           .pipe(
             map((x) => {
-              if(startComSegundos !== 0) {
+              if (startComSegundos !== 0) {
                 x = startComSegundos;
               }
               let seconds = x;
-              console.log(startComSegundos)
-             
               if (x <= 60) {
                 this.timer.contador = String(x) + 's';
               } else {
@@ -70,27 +75,32 @@ export class TimerManualComponent implements OnInit {
   }
 
   adicionarTimerManual() {
-    if(!this.timer.foiAlteradoHorasInicioFim) {
-      const horaAtual = moment();
-      let horaFinal = moment();
+      this.isValidoContador = true;
+      if (this.timer.descricao == null) {
+        this.isValidoStartContador = false;
+      } else {
+        this.isValidoStartContador = true;
+        if (!this.timer.foiAlteradoHorasInicioFim) {
+          const horaAtual = moment();
+          let horaFinal = moment();
 
-      const regex = /[0-9]{1,2}[hms]{1,2}/g
-      const regDigito = /[0-9]{1,2}/g
-     this.timer.contador.toLowerCase().match(regex)
-      .forEach((value) => {
-        const resultado = value.match(regDigito)[0];
-          if (value.includes("h")) {
-            horaFinal.add(Number(resultado), 'hours')
-          }
-          if (value.includes("m")) {
-            horaFinal.add(Number(resultado), 'minutes')
-          }
-      })
-      this.timer.inicio = horaAtual.toDate();
-      this.timer.fim = horaFinal.toDate();
-    }
-    this.eventTimerFinalizado.emit(this.timer);
-    this.timer = new Timer();
+          const regex = /[0-9]{1,2}[hms]{1,2}/g
+          this.timer.contador.toLowerCase().match(regex)
+            .forEach((value) => {
+              const resultado = value.match(this.regDigito)[0];
+              if (value.includes("h")) {
+                horaFinal.add(Number(resultado), 'hours')
+              }
+              if (value.includes("m")) {
+                horaFinal.add(Number(resultado), 'minutes')
+              }
+            })
+          this.timer.inicio = horaAtual.toDate();
+          this.timer.fim = horaFinal.toDate();
+        }
+        this.eventTimerFinalizado.emit(this.timer);
+        this.inicaTimer();
+      }
   }
 
   calcularHoras() {
